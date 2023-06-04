@@ -11,9 +11,9 @@ export const useError = () => {
       const { data } = await axios.get<CsrfToken>(
         `${process.env.REACT_APP_API_URL}/csrf`
       )
-      console.log(data.csrf_token);
       axios.defaults.headers.common['X-CSRF-TOKEN'] = data.csrf_token
     }
+    console.log(getCsrfToken);
     const switchErrorHandling = (msg: string) => {
         switch (msg) {
           case 'invalid csrf token':
