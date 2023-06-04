@@ -4,12 +4,14 @@ import { CsrfToken } from '../types'
 import useStore from '../store'
 
 export const useError = () => {
-    const navigate = useNavigate()
+    
+  const navigate = useNavigate()
     const resetEditedTask = useStore((state) => state.resetEditedTask)
     const getCsrfToken = async () => {
       const { data } = await axios.get<CsrfToken>(
         `${process.env.REACT_APP_API_URL}/csrf`
       )
+      console.log(data.csrf_token);
       axios.defaults.headers.common['X-CSRF-TOKEN'] = data.csrf_token
     }
     const switchErrorHandling = (msg: string) => {
