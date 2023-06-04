@@ -6,25 +6,25 @@ import axios from 'axios'
 import { CsrfToken } from './types'
 
 function App() {
-  useEffect(() => {
-    axios.defaults.withCredentials = true
-    const getCsrfToken = async () => {
-      const { data } = await axios.get<CsrfToken>(
-        `${process.env.REACT_APP_API_URL}/csrf`
-      )
-      axios.defaults.headers.common['X-CSRF-Token'] = data.csrf_token
-    }
-    getCsrfToken()
-  }, [])
-  return (
-   <BrowserRouter>
+useEffect(() => {
+  axios.defaults.withCredentials = true
+  const getCsrfToken = async () => {
+    const { data } = await axios.get<CsrfToken>(
+      `${process.env.REACT_APP_API_URL}/csrf`
+    )
+    axios.defaults.headers.common['X-CSRF-Token'] = data.csrf_token;
+    console.log(data.csrf_token);
+  }
+  getCsrfToken()
+}, [])
+return (
+  <BrowserRouter>
     <Routes>
       <Route path="/" element={<Auth />} />
-      <Route path="todo" element={<Todo />} />
+      <Route path="/todo" element={<Todo />} />
     </Routes>
-
-   </BrowserRouter>
-  );
+  </BrowserRouter>
+)
 }
 
 export default App;

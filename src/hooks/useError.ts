@@ -13,7 +13,6 @@ export const useError = () => {
       )
       axios.defaults.headers.common['X-CSRF-TOKEN'] = data.csrf_token
     }
-    console.log(getCsrfToken);
     const switchErrorHandling = (msg: string) => {
         switch (msg) {
           case 'invalid csrf token':
