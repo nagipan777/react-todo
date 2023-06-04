@@ -14,6 +14,7 @@ useEffect(() => {
     )
     axios.defaults.headers.common['X-CSRF-Token'] = data.csrf_token
   }
+  console.log(getCsrfToken());
   getCsrfToken()
 }, [])
 return (
